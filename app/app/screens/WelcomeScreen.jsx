@@ -1,3 +1,4 @@
+import { Colors } from '@/constants/Colors';
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Title, useTheme } from 'react-native-paper';
@@ -10,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
       <Button mode="contained" onPress={() => navigation.navigate('Login')} style={styles.button}>
         Login
       </Button>
-      <Button mode="outlined" onPress={() => navigation.navigate('Register')} style={styles.button}>
+      <Button mode="contained" onPress={() => navigation.navigate('Register')} style={styles.button}>
         Register
       </Button>
     </View>
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 10,
+    backgroundColor: Colors.dark.red
   },
 });
 

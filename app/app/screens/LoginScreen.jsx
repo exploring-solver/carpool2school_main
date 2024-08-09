@@ -4,6 +4,7 @@ import { TextInput, Button, Title, IconButton } from 'react-native-paper';
 import { AuthContext } from '../../context/AuthContext';
 import { login } from '../../services/api';
 import ErrorMessage from '../../components/ErrorMessage';
+import { Colors } from '@/constants/Colors';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ const LoginScreen = () => {
         onChangeText={setEmail}
         mode="outlined"
         style={styles.input}
+        theme={{ colors: { text: Colors.light.text, primary: Colors.light.primary } }}
       />
       <View style={styles.passwordContainer}>
         <TextInput
@@ -39,16 +41,25 @@ const LoginScreen = () => {
           secureTextEntry={!showPassword}
           mode="outlined"
           style={styles.input}
+          theme={{ colors: { text: Colors.light.text, primary: Colors.light.primary } }}
         />
         <IconButton
           icon={showPassword ? 'eye-off' : 'eye'}
           size={24}
           onPress={() => setShowPassword(!showPassword)}
           style={styles.iconButton}
+          color={Colors.light.red} // Set the icon color to accent (white)
+          background={Colors.light.red} // Set the icon color to accent (white)
         />
+
       </View>
       <ErrorMessage error={error} />
-      <Button mode="contained" onPress={handleLogin} style={styles.button}>
+      <Button
+        mode="outlined"
+        onPress={handleLogin}
+        style={styles.button}
+        theme={{ colors: { primary: Colors.light.accent, text: Colors.light.primary } }}
+      >
         Login
       </Button>
     </View>
@@ -60,14 +71,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
+    backgroundColor: Colors.light.primary,
   },
   title: {
     fontSize: 24,
     marginBottom: 20,
     textAlign: 'center',
+    color: Colors.light.accent,
   },
   input: {
     marginBottom: 10,
+    backgroundColor: Colors.light.accent,
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -80,6 +94,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    borderColor: Colors.light.accent,
   },
 });
 
